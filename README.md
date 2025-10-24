@@ -15,7 +15,6 @@ Este projeto foi desenvolvido como parte do Desafio Back-End, implementando uma 
 - **SQLAlchemy**
 - **Pydantic**
 - **Uvicorn**
-- **Pytest**
 
 ## Arquitetura
 
@@ -40,50 +39,52 @@ app/
 
 ### 1. Clone o repositório
 ```bash
-git clone <url-do-repositorio>
-cd produtos-api
+git clone https://github.com/MarceloGoncalvesAlves/Desafio_Back_ASCII
+cd Desafio_Back_ASCII
 ```
 
 ### 2. Crie e ative o ambiente virtual
-
+```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 
 ### 3. Instale as dependências
-
+```bash
 pip install -r requirements.txt
-
+```
 
 ### 4. Configure o banco de dados
 
 **Crie o banco no PostgreSQL:**
+```bash
 psql -U postgres
 CREATE DATABASE produtos_db;
 \q
-
+```
 
 **Configure o arquivo .env:**
 
 Crie um arquivo `.env` na raiz do projeto:
 
 **Coloque Nele**
+```bash
 DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/produtos_db
-
+```
 **Importante:** Substitua `sua_senha` pela senha real do PostgreSQL.
 
 
 ### 5. Execute a aplicação
+```bash
 uvicorn app.main:app --reload
-
+```
 
 A API estará disponível em: http://localhost:8000
 
 ## Documentação da API
 
-Acesse a documentação interativa (Swagger):
+Acesse a documentação interativa:
 - **Swagger UI:** http://localhost:8000/docs
-- **ReDoc:** http://localhost:8000/redoc
 
 ## Endpoints
 
@@ -92,19 +93,6 @@ Acesse a documentação interativa (Swagger):
 - POST /api/produtos → cria novo produto 
 - PUT /api/produtos/{id} → atualiza produto 
 - DELETE /api/produtos/{id} → remove produto
-
-
-
-## Testes
-
-Execute os testes unitários:
-
-pytest tests/ -v
-
-
-Para ver cobertura de testes:
-pytest tests/ --cov=app
-
 
 ## Estrutura de Dados
 
@@ -123,18 +111,10 @@ A API implementa validações automáticas:
 
 ## Funcionalidades Extras
 
-- **Paginação:** Suporte para skip/limit nos endpoints de listagem
+
 - **Filtros:** Filtro por categoria
 - **Validação automática:** DTOs com Pydantic
 - **Documentação automática:** Swagger/ReDoc integrados
 
-
-##  Notas
-
-- O arquivo .env não é versionado
-- As tabelas são criadas automaticamente na primeira execução
-- Em produção, configure `allow_origins` no CORS para domínios específicos
-
 ## Autor
-
 Marcelo Gonçalves Alves
