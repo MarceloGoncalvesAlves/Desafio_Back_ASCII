@@ -31,9 +31,7 @@ class ProdutoService:
     
     @staticmethod
     def listar_produtos(
-        db: Session, 
-        skip: int = 0, 
-        limit: int = 100,
+        db: Session,
         categoria: Optional[str] = None
     ) -> List[Produto]:
         """Lista produtos com paginação e filtro por categoria"""
@@ -43,7 +41,7 @@ class ProdutoService:
             if categoria:
                 query = query.filter(Produto.categoria == categoria)
             
-            return query.offset(skip).limit(limit).all()
+            return query.all()
         except SQLAlchemyError as e:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

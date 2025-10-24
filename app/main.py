@@ -8,7 +8,7 @@ from app.controllers.produto import router as produto_router
 
 Base.metadata.create_all(bind=engine)
 
-app=FastAPI(
+app= FastAPI(
     title="API de Gerenciamento de Produtos",
     description="API REST para operações CRUD de produtos",
     version="1.0.0",
@@ -26,19 +26,3 @@ app.add_middleware(
 
 app.include_router(produto_router)
 
-
-@app.get("/", tags=["Health"])
-def root():
-    """Health check da API"""
-    return {
-        "message": "API de Produtos",
-        "status": "online",
-        "version": "1.0.0",
-        "docs": "/docs"
-    }
-
-
-@app.get("/health", tags=["Health"])
-def health_check():
-    """Endpoint de verificação de saúde"""
-    return {"status": "healthy"}

@@ -33,13 +33,11 @@ def criar_produto(produto: ProdutoCreate, db: Session = Depends(get_db)):
     summary="Listar produtos"
 )
 def listar_produtos(
-    skip: int = Query(0, ge=0, description="Registros a pular"),
-    limit: int = Query(100, ge=1, le=1000, description="Máximo de registros"),
     categoria: Optional[str] = Query(None, description="Filtrar por categoria"),
     db: Session = Depends(get_db)
 ):
     """Lista produtos com paginação e filtro opcional por categoria"""
-    return ProdutoService.listar_produtos(db, skip, limit, categoria)
+    return ProdutoService.listar_produtos(db, categoria)
 
 
 @router.get(
